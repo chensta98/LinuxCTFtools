@@ -79,9 +79,16 @@ fi
 echo "----------Forensic Info----------" >> $output_file
 echo "# Users" >> $output_file
 
-IFS=''
-if [ -f "/etc/passwd" ]; then
-	awk -F ':' -v output_file="$output_file" '{print $1 >> output_file}' /etc/passwd
-else
-	echo -e "${RED}${ERR} /etc/passwd file does not exist. ${ENDC}"
-fi
+declare -a users
+
+while read p; do
+	users+=($(echo "$p" | cut -d ':' -f 1))
+done < /etc/passwd
+
+for username in "${users[@]}"; do
+	echo "${username}" >> $output_file
+done
+
+for username in "${users[@]}"; do
+	if [ -f ]
+done
