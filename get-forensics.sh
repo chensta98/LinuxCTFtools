@@ -76,19 +76,14 @@ if [ -n "$output_file" ]; then
 	echo "Output file specified: $output_file"
 fi
 
-echo "----------Forensic Info----------" >> $output_file
+echo "----------Forensic Info----------" > $output_file
 echo "# Users" >> $output_file
 
 declare -a users
 
-while read p; do
-	users+=($(echo "$p" | cut -d ':' -f 1))
-done < /etc/passwd
+users=($(cut -d ':' -f 1 /etc/passwd))
 
 for username in "${users[@]}"; do
 	echo "${username}" >> $output_file
 done
 
-for username in "${users[@]}"; do
-	if [ -f ]
-done
