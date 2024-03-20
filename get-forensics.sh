@@ -90,6 +90,10 @@ done
 echo "" >> ${output_file}
 echo "# Authorized Keys" >> $output_file
 
+if [[ -f "/root/.ssh/authorized_keys" ]]; then
+	echo "FILE EXIST: /root/.ssh/authorized_keys" >> ${output_file}
+fi
+
 for username in "${users[@]}"; do
 	auth_keys="/home/${username}/.ssh/authorized_keys"
 
@@ -98,3 +102,13 @@ for username in "${users[@]}"; do
 	fi
 done
 
+echo "" >> ${output_file}
+echo "# Netstat Output" >> $output_file
+
+# this may cause errors/ might need to use ss instead
+echo "$(netstat -an)" >> $output_file
+
+echo "" >> ${output_file}
+echo "# CronJobs" >> $output_file
+
+echo "$(cat /etc/crontab)" >> $output_file
