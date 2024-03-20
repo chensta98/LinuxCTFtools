@@ -87,3 +87,14 @@ for username in "${users[@]}"; do
 	echo "${username}" >> $output_file
 done
 
+echo "" >> ${output_file}
+echo "# Authorized Keys" >> $output_file
+
+for username in "${users[@]}"; do
+	auth_keys="/home/${username}/.ssh/authorized_keys"
+
+	if [[ -f $auth_keys ]]; then
+		echo "FILE EXIST: ${auth_keys}" >> ${output_file}
+	fi
+done
+
