@@ -1,0 +1,21 @@
+Persistence:
+
+Persistence Files to Check
+/etc/bash.bashrc	systemwide files executed at the start of interactive shell (tmux)
+/etc/bash_logout	Systemwide files executed when we terminate the shell
+~/.bashrc	        Widly exploited user specific startup script executed at the start of shell
+~/.bash_profile, 
+~/.bash_login,
+~/.profile	        User specific files , but which found first are executed first
+~.bash_logout	    User specific files, executed when shell session closes
+~/.bash_logout	    User-specific clean up script at the end of the session
+/etc/profile	    Systemwide files executed at the start of login shells
+/etc/profile.d	    all the .sh files are exeucted at the start of login shells
+
+Custom .service from systemd
+/etc/systemd/system/my_custom_service.service
+
+MOTD file:
+/etc/motd
+/etc/update-motd.d
+/etc/default/motd-news
